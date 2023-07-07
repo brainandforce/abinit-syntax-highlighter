@@ -1,0 +1,29 @@
+{
+	"name": "abinit-highlighter",
+	"displayName": "abinit highlighter",
+	"description": "syntax highlighting for abinit input files",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.70.0"
+  	},
+  	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "abinit",
+				"aliases": ["abinit", "abinit"],
+				"extensions": [".abi"],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "abinit",
+				"scopeName": "text.abinit",
+				"path": "./syntaxes/abinit.tmLanguage.json"
+			}
+		]
+	}
+}

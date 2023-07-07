@@ -1,0 +1,150 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "abinit",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#invalid"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line",
+					"match": "[!#].*"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.fraction.abinit",
+					"match": "[+-]?[0-9]+\\/[0-9]+\\b"
+				},
+				{
+					"name": "constant.numeric.abinit",
+					"match": "(?i)[+-]?[0-9]*\\.?[0-9]+([def][-+]?[0-9]+)?\\b"
+				},
+				{
+					"name": "constant.language.units.abinit",
+					"match": "\\b(?i)(Ry|rydberg|eV|electron-volt|K|angstr|angstrom|nm|nanometer|T|tesla|s|sec|second)s*\\b"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.datasets.abinit",
+					"match": "\\b(?i)([nju]dtset)\\b"
+				},
+				{
+					"name": "keyword.control.include.abinit",
+					"match": "include"
+				},
+				{
+					"name": "keyword.operator.abinit",
+					"match": "[*+:]"
+				},
+				{
+					"name": "keyword.control.numbers.abinit",
+					"match": "\\B[0-9]+\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.abinit",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.abinit",
+					"match": "\\\\."
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "support.variable.anaddb.abinit",
+					"match": "\\b(?i)(a2fsmear|alphon|asr|atifc|band_gap|brav|chneut|ddb_filepath|ddk_filepath|dieflag|dipdip|dipquad|dos_maxmode|dosdeltae|dossmear|dossum|dostol|eivec|elaflag|elph_fermie|elphflag|elphsmear|enunit|ep_b_max|ep_b_min|ep_extrael|ep_int_gkk|ep_keepbands|ep_nqpt|ep_nspline|ep_prt_yambo|ep_qptlist|ep_scalprod|eph_prefix|flexoflag|freeze_displ|frmax|frmin|gkk_filepath|gkqwrite|gruns_ddbs|gruns_nddbs|iatfix|iatprj_bs|ifcana|ifcflag|ifcout|ifltransport|instrflag|istrfix|kptrlatt|kptrlatt_fine|mustar|natfix|natifc|natprj_bs|nchan|ndivsm|nfreq|ng2qpt|ngqpt|ngrids|nlflag|nph1l|nph2l|nqpath|nqshft|nsphere|nstrfix|ntemper|nwchan|outboltztrap|outdata_prefix|output_file|outscphon|piezoflag|polflag|prt_ifc|prtbltztrp|prtddb|prtdos|prtfsurf|prtmbm|prtnest|prtphbands|prtsrlr|prtvol|q1shft|q2shft|qgrid_type|qpath|qph1l|qph2l|qrefine|quadquad|ramansr|relaxat|relaxstr|rfmeth|rifcsph|selectz|symdynmat|symgkq|targetpol|telphint|temperinc|tempermin|thermal_supercell|thmflag|thmtol|use_k_fine|vs_qrad_tolkms)"
+				},
+				{
+					"name": "support.variable.basic.abinit",
+					"match": "\\b(?i)(accuracy|acell|angdeg|ecut|einterp|iscf|ixc|kpt|kptnrm|kptopt|natom|nband|nbandhf|ngkpt|nkpath|nkpt|nkpthf|nsppol|nstep|nsym|ntypat|occopt|rprim|rprimd|scalecart|shiftk|structure|symrel|tnons|toldfe|toldff|tolrff|tolvrs|tolwfr|typat|usewvl|wtk|wvl_hgrid|xcart|xred|znucl)"
+				},
+				{
+					"name": "support.variable.developers.abinit",
+					"match": "\\b(?i)(builtintest|cprj_update_lvl|densfor_pred|densty|dmft_read_occnd|dmftctqmc_basis|effmass_free|eshift|exchmix|exchn2n3d|extrapwf|fermie_nest|fft_count|fftalg|fftcache|getgam_eig2nkq|getwfkfine|intxc|iomode|iprcfc|irandom|irdwfkfine|isecur|istatr|istatshft|istwfk|lotf_classic|lotf_nitex|lotf_nneigx|lotf_version|macro_uj|maxnsym|mem_test|mixprec|mqgrid|nbdblock|nc_xccc_gspace|nctime|nloc_alg|nloc_mem|nnsclo|nnsclohf|nonlop_ylm_count|normpawu|npulayit|nscforder|optforces|optnlxccc|ortalg|papiopt|pawprt_b|pawprt_k|pawujat|pawujrad|pawujv|plowan_bandf|plowan_bandi|plowan_compute|plowan_iatom|plowan_it|plowan_lcalc|plowan_natom|plowan_nbl|plowan_nt|plowan_projcalc|plowan_realspace|prepscphon|prtbltztrp|prtcif|prtdipole|prtnest|prtposcar|prtprocar|recefermi|recgratio|recnpath|recnrec|recptrott|recrcut|rectesteg|rectolden|symmorphi|tfkinfunc|tfw_toldfe|tolrde|use_gemm_nonlop|use_nonscf_gkk|usedmft|usepotzero|useria|userib|useric|userid|userie|userra|userrb|userrc|userrd|userre|useylm|wfoptalg|xc_denpos|xc_tb09_c)"
+				},
+				{
+					"name": "support.variable.files.abinit",
+					"match": "\\b(?i)(get1den|get1wf|getbscoup|getbseig|getbsreso|getddb|getddb_filepath|getddk|getdelfd|getden|getden_filepath|getdkde|getdkdk|getdvdb|getdvdb_filepath|getefmas|gethaydock|getocc|getpot_filepath|getqps|getscr|getscr_filepath|getsigeph_filepath|getsuscep|getwfk|getwfk_filepath|getwfkfine_filepath|getwfq|getwfq_filepath|indata_prefix|ird1den|ird1wf|irdbscoup|irdbseig|irdbsreso|irdchkprdm|irdddb|irdddk|irdden|irddvdb|irdefmas|irdhaydock|irdqps|irdscr|irdsuscep|irdwfk|irdwfq|kssform|outdata_prefix|output_file|pp_dirpath|prt1dm|prtchkprdm|prtden|prtdos|prtdosm|prteig|prtelf|prtfsurf|prtgden|prtgeo|prtgkk|prtgsr|prtkbff|prtkden|prtkpt|prtlden|prtpot|prtpsps|prtspcur|prtstm|prtsuscep|prtvclmb|prtvha|prtvhxc|prtvol|prtvolimg|prtvpsp|prtvxc|prtwant|prtwf|prtwf_full|prtxml|pseudos|tmpdata_prefix)"
+				},
+				{
+					"name": "support.variable.geometry.abinit",
+					"match": "\\b(?i)(brvltt|chempot|genafm|natrd|nobj|nzchempot|objaat|objaax|objan|objarf|objaro|objatr|objbat|objbax|objbn|objbrf|objbro|objbtr|ptgroupma|spgaxor|spgorig|spgroup|spgroupma|tolsym|vaclst|vacnum|xyzfile)"
+				},
+				{
+					"name": "support.variable.groundstate.abinit",
+					"match": "\\b(?i)(algalch|auxc_ixc|auxc_scal|boxcenter|boxcutmin|cellcharge|charge|chkexit|chkprim|chksymbreak|chksymtnons|chrgat|constraint_kind|cpuh|cpum|cpus|diecut|diegap|dielam|dielng|diemac|diemix|diemixmag|dosdeltae|enunit|expert_user|extfpmd_nbcut|fband|fock_icutcoul|fockdownsampling|fockoptmix|hyb_mixing|hyb_mixing_sr|hyb_range_dft|hyb_range_fock|iatsph|icoulomb|icutcoul|iprcel|iqpt|ivalence|ixcpositron|jellslab|kptbounds|kptrlatt|kptrlen|magcon_lambda|magconon|mixalch|natsph|natsph_extra|nbdbuf|ndivk|ndivsm|ngfft|ngqpt|nline|npsp|npspalch|nqfd|nqpt|nshiftq|nspden|nspinor|ntypalch|ntyppure|nucdipmom|nwfshist|occ|optdriver|optstress|orbmag|posdoppler|positron|posnstep|posocc|postoldfe|postoldff|prtdensph|prtebands|qpt|qptnrm|qptopt|qptrlatt|ratsm|ratsph|ratsph_extra|rcut|rmm_diis|rmm_diis_savemem|scphon_supercell|scphon_temp|shiftq|slabwsrad|slabzbeg|slabzend|slk_rankpp|so_psp|spinat|stmbias|supercell_latt|symafm|timopt|tl_nprccg|tl_radius|tphysel|tsmear|useextfpmd|usekden|vacuum|vacwidth|vcutgeo|wfk_task|wfmix|wtq|wvl_bigdft_comp|wvl_crmult|wvl_frmult|wvl_ngauss|wvl_nprccg|xredsph_extra)"
+				},
+				{
+					"name": "support.variable.internal.abinit",
+					"match": "\\b(?i)(cprj_in_memory|kptns|kptns_hf|mband|mgfft|mgfftdg|mpw|natpawu|ndynimage|nelect|nfft|nfftdg|npweps|npwsigx|npwwfn|qptn|usefock|usepaw|userec|xclevel|ziontypat)"
+				},
+				{
+					"name": "support.variable.paral.abinit",
+					"match": "\\b(?i)(autoparal|bandpp|gpu_devices|gpu_linalg_limit|gwpara|localrdwf|max_ncpus|np_slk|npband|npfft|nphf|npimage|npkpt|nppert|npspinor|paral_atom|paral_kgb|paral_rf|pw_unbal_thresh|use_gpu_cuda|use_slk)"
+				},
+				{
+					"name": "support.variable.paw.abinit",
+					"match": "\\b(?i)(bxctmindg|dmatpawu|dmatpuopt|dmatudiag|f4of2_sla|f6of2_sla|iboxcut|jpawu|ldaminushalf|lexexch|lpawu|mqgriddg|ngfftdg|pawcpxocc|pawcross|pawecutdg|pawfatbnd|pawlcutd|pawlmix|pawmixdg|pawnhatxc|pawnphi|pawntheta|pawnzlm|pawoptmix|pawoptosc|pawovlp|pawprtden|pawprtdos|pawprtvol|pawprtwf|pawspnorb|pawstgylm|pawsushat|pawusecp|pawxcdev|prtefg|prtfc|prtnabla|ptcharge|quadmom|spnorbscl|upawu|usedmatpu|useexexch|usepawu|usexcnhat)"
+				},
+				{
+					"name": "support.variable.relaxation.abinit",
+					"match": "\\b(?i)(adpimd|adpimd_gamma|amu|bmass|chkdilatmx|cineb_start|delayperm|diismemory|dilatmx|dtion|dynimage|ecutsm|friction|fxcartfactor|ga_algor|ga_fitness|ga_n_rules|ga_opt_percent|ga_rules|getcell|getvel|getxcart|getxred|goprecon|goprecprm|hmcsst|hmctt|iatcon|iatfix|iatfixx|iatfixy|iatfixz|imgmov|imgwfstor|ionmov|istatimg|mdtemp|mdwall|mep_mxstep|mep_solver|mixesimgf|natcon|natfix|natfixx|natfixy|natfixz|nconeq|neb_algo|neb_spring|nimage|nnos|noseinert|ntime|ntimimage|optcell|pimass|pimd_constraint|pitransform|prtatlist|qmass|random_atpos|restartxf|signperm|strfact|string_algo|strprecon|strtarget|tolimg|tolmxde|tolmxf|vel|vel_cell|vis|wtatcon)"
+				},
+				{
+					"name": "support.variable.wannier90.abinit",
+					"match": "\\b(?i)(w90).+\\b"
+				},
+				{
+					"name": "variable.environment.abinit",
+					"match": "\\$\\S+\\b"
+				}
+			]
+		},
+		"invalid": {
+			"patterns": [
+				{
+					"name": "invalid.illegal.abinit",
+					"match": "\t"
+				},
+				{
+					"name": "invalid.linelimit.abinit",
+					"match": ".{132,}"
+				},
+				{
+					"name": "invalid.deprecated.abinit",
+					"match": "\\b(au|hartree|bohr)\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "text.abinit"
+}
